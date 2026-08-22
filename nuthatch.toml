@@ -1,0 +1,68 @@
+[nest]
+name = "graph-network"
+chain = "arbitrum-one"
+chain_id = 42161
+# A keyless public endpoint, so this file is publishable: `nuthatch.toml` is pinned into the nest's
+# content address and must never carry a credential. It is enough to follow the tip. A *backfill*
+# needs archive depth this endpoint may not have - pass your own with `--rpc`, and check it first
+# with `nuthatch doctor --rpc <url>`.
+rpc_urls = [
+    "https://arb1.arbitrum.io/rpc",
+]
+schema_version = 1
+block_timestamps = true
+
+[[contracts]]
+alias = "gns"
+address = "0xec9a7fb6cbc2e41926127929c2dce6e9c5d33bec"
+abi = "abis/gns.json"
+
+[[contracts]]
+alias = "curation"
+address = "0x22d78fb4bc72e191c765807f8891b5e1785c8014"
+abi = "abis/curation.json"
+
+[[contracts]]
+alias = "epochs"
+address = "0x5a843145c43d328b9bb7a4401d94918f131bb281"
+abi = "abis/epochs.json"
+
+[[contracts]]
+alias = "rewards"
+address = "0x971b9d3d0ae3eca029cab5ea1fb0f72c85e6a525"
+abi = "abis/rewards.json"
+
+[[contracts]]
+alias = "grt"
+address = "0x9623063377ad1b27544c965ccd7342f7ea7e88c7"
+abi = "abis/grt.json"
+
+[[contracts]]
+alias = "staking"
+address = "0x00669a4cf01450b64e8a2a20e9b1fcb71e61ef03"
+abi = "abis/staking.json"
+
+# The SAME address as `staking` above, deliberately, and a second entry rather than a merged ABI.
+#
+# `0x00669a4c…` has had three implementations: `0x2787f893…`, then `0x0dae36ad…`, then Horizon's
+# `0xaa335943…` (read off the EIP-1967 slot at blocks 100M / 300M / 420M). Horizon renamed the staking
+# events wholesale, so the ABI `init` resolves - the current one - is silent about everything before
+# it. Measured: one 500,000-block window at block 100,000,000 holds 32 `StakeDeposited` and 181
+# `AllocationCreated` from this address, and 0 of their Horizon equivalents. Without this entry the
+# nest decodes none of it and reports a perfectly healthy run (nuthatch#773).
+#
+# `StakeDelegatedWithdrawn` is deliberately absent: its signature is unchanged across the upgrade, so
+# the `staking` entry already captures all of it. Declaring it twice decodes every log into two
+# identically-populated tables.
+[[contracts]]
+alias = "staking_legacy"
+address = "0x00669a4cf01450b64e8a2a20e9b1fcb71e61ef03"
+start_block = 42449585
+abi = "abis/staking-legacy.json"
+events = [
+    "StakeDeposited",
+    "StakeWithdrawn",
+    "StakeDelegated",
+    "StakeDelegatedLocked",
+    "StakeSlashed",
+]

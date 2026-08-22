@@ -1,0 +1,1110 @@
+# semantic.toml - what this nest's data *means* (RFC-0016). Read by the MCP `schema`
+# tool, the admin UI, and the scaffolded skill. Edit descriptions freely; the
+# `[table.*.footguns]` are DERIVED from the ABI and regenerated - leave them be.
+
+schema_version = 1
+
+[nest]
+description = "The `graph-network` nest on arbitrum-one. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.curation__burned]
+description = "`Burned(address,bytes32,uint256,uint256)` events emitted by the `curation` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Burned(address,bytes32,uint256,uint256) event"
+
+[table.curation__burned.columns]
+curator = "The `curator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+signal = "The `signal` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphDeploymentID = "The `subgraphDeploymentID` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.curation__burned.footguns]
+big_ints = [
+    "tokens",
+    "signal",
+]
+overflows_dec = [
+    "tokens",
+    "signal",
+]
+
+[table.curation__collected]
+description = "`Collected(bytes32,uint256)` events emitted by the `curation` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Collected(bytes32,uint256) event"
+
+[table.curation__collected.columns]
+subgraphDeploymentID = "The `subgraphDeploymentID` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.curation__collected.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.curation__contract_synced]
+description = "`ContractSynced(bytes32,address)` events emitted by the `curation` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ContractSynced(bytes32,address) event"
+
+[table.curation__contract_synced.columns]
+contractAddress = "The `contractAddress` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nameHash = "The `nameHash` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.curation__parameter_updated]
+description = "`ParameterUpdated(string)` events emitted by the `curation` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ParameterUpdated(string) event"
+
+[table.curation__parameter_updated.columns]
+param = "The `param` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.curation__set_controller]
+description = "`SetController(address)` events emitted by the `curation` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SetController(address) event"
+
+[table.curation__set_controller.columns]
+controller = "The `controller` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.curation__signalled]
+description = "`Signalled(address,bytes32,uint256,uint256,uint256)` events emitted by the `curation` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Signalled(address,bytes32,uint256,uint256,uint256) event"
+
+[table.curation__signalled.columns]
+curationTax = "The `curationTax` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+curator = "The `curator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+signal = "The `signal` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphDeploymentID = "The `subgraphDeploymentID` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.curation__signalled.footguns]
+big_ints = [
+    "tokens",
+    "signal",
+    "curationTax",
+]
+overflows_dec = [
+    "tokens",
+    "signal",
+    "curationTax",
+]
+
+[table.curation__subgraph_service_set]
+description = "`SubgraphServiceSet(address)` events emitted by the `curation` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphServiceSet(address) event"
+
+[table.curation__subgraph_service_set.columns]
+newSubgraphService = "The `newSubgraphService` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.epochs__contract_synced]
+description = "`ContractSynced(bytes32,address)` events emitted by the `epochs` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ContractSynced(bytes32,address) event"
+
+[table.epochs__contract_synced.columns]
+contractAddress = "The `contractAddress` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nameHash = "The `nameHash` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.epochs__epoch_length_update]
+description = "`EpochLengthUpdate(uint256,uint256)` events emitted by the `epochs` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per EpochLengthUpdate(uint256,uint256) event"
+
+[table.epochs__epoch_length_update.columns]
+epoch = "The `epoch` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+epochLength = "The `epochLength` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.epochs__epoch_length_update.footguns]
+big_ints = [
+    "epoch",
+    "epochLength",
+]
+overflows_dec = [
+    "epoch",
+    "epochLength",
+]
+
+[table.epochs__epoch_run]
+description = "`EpochRun(uint256,address)` events emitted by the `epochs` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per EpochRun(uint256,address) event"
+
+[table.epochs__epoch_run.columns]
+caller = "The `caller` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+epoch = "The `epoch` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.epochs__epoch_run.footguns]
+big_ints = ["epoch"]
+overflows_dec = ["epoch"]
+
+[table.epochs__parameter_updated]
+description = "`ParameterUpdated(string)` events emitted by the `epochs` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ParameterUpdated(string) event"
+
+[table.epochs__parameter_updated.columns]
+param = "The `param` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.epochs__set_controller]
+description = "`SetController(address)` events emitted by the `epochs` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SetController(address) event"
+
+[table.epochs__set_controller.columns]
+controller = "The `controller` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__contract_synced]
+description = "`ContractSynced(bytes32,address)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ContractSynced(bytes32,address) event"
+
+[table.gns__contract_synced.columns]
+contractAddress = "The `contractAddress` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nameHash = "The `nameHash` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__counterpart_g_n_s_address_updated]
+description = "`CounterpartGNSAddressUpdated(address)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CounterpartGNSAddressUpdated(address) event"
+
+[table.gns__counterpart_g_n_s_address_updated.columns]
+_counterpart = "The `_counterpart` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__curator_balance_received]
+description = "`CuratorBalanceReceived(uint256,uint256,address,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CuratorBalanceReceived(uint256,uint256,address,uint256) event"
+
+[table.gns__curator_balance_received.columns]
+_l1SubgraphId = "The `_l1SubgraphId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+_l2Curator = "The `_l2Curator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+_l2SubgraphID = "The `_l2SubgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+_tokens = "The `_tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__curator_balance_received.footguns]
+big_ints = [
+    "_l1SubgraphId",
+    "_l2SubgraphID",
+    "_tokens",
+]
+overflows_dec = [
+    "_l1SubgraphId",
+    "_l2SubgraphID",
+    "_tokens",
+]
+
+[table.gns__curator_balance_returned_to_beneficiary]
+description = "`CuratorBalanceReturnedToBeneficiary(uint256,address,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CuratorBalanceReturnedToBeneficiary(uint256,address,uint256) event"
+
+[table.gns__curator_balance_returned_to_beneficiary.columns]
+_l1SubgraphID = "The `_l1SubgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+_l2Curator = "The `_l2Curator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+_tokens = "The `_tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__curator_balance_returned_to_beneficiary.footguns]
+big_ints = [
+    "_l1SubgraphID",
+    "_tokens",
+]
+overflows_dec = [
+    "_l1SubgraphID",
+    "_tokens",
+]
+
+[table.gns__g_r_t_withdrawn]
+description = "`GRTWithdrawn(uint256,address,uint256,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per GRTWithdrawn(uint256,address,uint256,uint256) event"
+
+[table.gns__g_r_t_withdrawn.columns]
+curator = "The `curator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nSignalBurnt = "The `nSignalBurnt` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+withdrawnGRT = "The `withdrawnGRT` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__g_r_t_withdrawn.footguns]
+big_ints = [
+    "subgraphID",
+    "nSignalBurnt",
+    "withdrawnGRT",
+]
+overflows_dec = [
+    "subgraphID",
+    "nSignalBurnt",
+    "withdrawnGRT",
+]
+
+[table.gns__legacy_subgraph_claimed]
+description = "`LegacySubgraphClaimed(address,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per LegacySubgraphClaimed(address,uint256) event"
+
+[table.gns__legacy_subgraph_claimed.columns]
+graphAccount = "The `graphAccount` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphNumber = "The `subgraphNumber` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__legacy_subgraph_claimed.footguns]
+big_ints = ["subgraphNumber"]
+overflows_dec = ["subgraphNumber"]
+
+[table.gns__parameter_updated]
+description = "`ParameterUpdated(string)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ParameterUpdated(string) event"
+
+[table.gns__parameter_updated.columns]
+param = "The `param` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__set_controller]
+description = "`SetController(address)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SetController(address) event"
+
+[table.gns__set_controller.columns]
+controller = "The `controller` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__set_default_name]
+description = "`SetDefaultName(address,uint256,bytes32,string)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SetDefaultName(address,uint256,bytes32,string) event"
+
+[table.gns__set_default_name.columns]
+graphAccount = "The `graphAccount` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+name = "The `name` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nameIdentifier = "The `nameIdentifier` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nameSystem = "The `nameSystem` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__set_default_name.footguns]
+big_ints = ["nameSystem"]
+overflows_dec = ["nameSystem"]
+
+[table.gns__signal_burned]
+description = "`SignalBurned(uint256,address,uint256,uint256,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SignalBurned(uint256,address,uint256,uint256,uint256) event"
+
+[table.gns__signal_burned.columns]
+curator = "The `curator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nSignalBurnt = "The `nSignalBurnt` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokensReceived = "The `tokensReceived` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+vSignalBurnt = "The `vSignalBurnt` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__signal_burned.footguns]
+big_ints = [
+    "subgraphID",
+    "nSignalBurnt",
+    "vSignalBurnt",
+    "tokensReceived",
+]
+overflows_dec = [
+    "subgraphID",
+    "nSignalBurnt",
+    "vSignalBurnt",
+    "tokensReceived",
+]
+
+[table.gns__signal_minted]
+description = "`SignalMinted(uint256,address,uint256,uint256,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SignalMinted(uint256,address,uint256,uint256,uint256) event"
+
+[table.gns__signal_minted.columns]
+curator = "The `curator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nSignalCreated = "The `nSignalCreated` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokensDeposited = "The `tokensDeposited` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+vSignalCreated = "The `vSignalCreated` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__signal_minted.footguns]
+big_ints = [
+    "subgraphID",
+    "nSignalCreated",
+    "vSignalCreated",
+    "tokensDeposited",
+]
+overflows_dec = [
+    "subgraphID",
+    "nSignalCreated",
+    "vSignalCreated",
+    "tokensDeposited",
+]
+
+[table.gns__signal_transferred]
+description = "`SignalTransferred(uint256,address,address,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SignalTransferred(uint256,address,address,uint256) event"
+
+[table.gns__signal_transferred.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nSignalTransferred = "The `nSignalTransferred` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__signal_transferred.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = [
+    "subgraphID",
+    "nSignalTransferred",
+]
+overflows_dec = [
+    "subgraphID",
+    "nSignalTransferred",
+]
+
+[table.gns__subgraph_deprecated]
+description = "`SubgraphDeprecated(uint256,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphDeprecated(uint256,uint256) event"
+
+[table.gns__subgraph_deprecated.columns]
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+withdrawableGRT = "The `withdrawableGRT` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__subgraph_deprecated.footguns]
+big_ints = [
+    "subgraphID",
+    "withdrawableGRT",
+]
+overflows_dec = [
+    "subgraphID",
+    "withdrawableGRT",
+]
+
+[table.gns__subgraph_l2_transfer_finalized]
+description = "`SubgraphL2TransferFinalized(uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphL2TransferFinalized(uint256) event"
+
+[table.gns__subgraph_l2_transfer_finalized.columns]
+_l2SubgraphID = "The `_l2SubgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__subgraph_l2_transfer_finalized.footguns]
+big_ints = ["_l2SubgraphID"]
+overflows_dec = ["_l2SubgraphID"]
+
+[table.gns__subgraph_metadata_updated]
+description = "`SubgraphMetadataUpdated(uint256,bytes32)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphMetadataUpdated(uint256,bytes32) event"
+
+[table.gns__subgraph_metadata_updated.columns]
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphMetadata = "The `subgraphMetadata` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__subgraph_metadata_updated.footguns]
+big_ints = ["subgraphID"]
+overflows_dec = ["subgraphID"]
+
+[table.gns__subgraph_n_f_t_updated]
+description = "`SubgraphNFTUpdated(address)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphNFTUpdated(address) event"
+
+[table.gns__subgraph_n_f_t_updated.columns]
+subgraphNFT = "The `subgraphNFT` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__subgraph_published]
+description = "`SubgraphPublished(uint256,bytes32,uint32)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphPublished(uint256,bytes32,uint32) event"
+
+[table.gns__subgraph_published.columns]
+reserveRatio = "The `reserveRatio` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphDeploymentID = "The `subgraphDeploymentID` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__subgraph_published.footguns]
+big_ints = ["subgraphID"]
+overflows_dec = ["subgraphID"]
+
+[table.gns__subgraph_received_from_l1]
+description = "`SubgraphReceivedFromL1(uint256,uint256,address,uint256)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphReceivedFromL1(uint256,uint256,address,uint256) event"
+
+[table.gns__subgraph_received_from_l1.columns]
+_l1SubgraphID = "The `_l1SubgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+_l2SubgraphID = "The `_l2SubgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+_owner = "The `_owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+_tokens = "The `_tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__subgraph_received_from_l1.footguns]
+big_ints = [
+    "_l1SubgraphID",
+    "_l2SubgraphID",
+    "_tokens",
+]
+overflows_dec = [
+    "_l1SubgraphID",
+    "_l2SubgraphID",
+    "_tokens",
+]
+
+[table.gns__subgraph_upgraded]
+description = "`SubgraphUpgraded(uint256,uint256,uint256,bytes32)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphUpgraded(uint256,uint256,uint256,bytes32) event"
+
+[table.gns__subgraph_upgraded.columns]
+subgraphDeploymentID = "The `subgraphDeploymentID` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokensSignalled = "The `tokensSignalled` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+vSignalCreated = "The `vSignalCreated` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__subgraph_upgraded.footguns]
+big_ints = [
+    "subgraphID",
+    "vSignalCreated",
+    "tokensSignalled",
+]
+overflows_dec = [
+    "subgraphID",
+    "vSignalCreated",
+    "tokensSignalled",
+]
+
+[table.gns__subgraph_version_updated]
+description = "`SubgraphVersionUpdated(uint256,bytes32,bytes32)` events emitted by the `gns` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphVersionUpdated(uint256,bytes32,bytes32) event"
+
+[table.gns__subgraph_version_updated.columns]
+subgraphDeploymentID = "The `subgraphDeploymentID` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphID = "The `subgraphID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+versionMetadata = "The `versionMetadata` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.gns__subgraph_version_updated.footguns]
+big_ints = ["subgraphID"]
+overflows_dec = ["subgraphID"]
+
+[table.grt__approval]
+description = "`Approval(address,address,uint256)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Approval(address,address,uint256) event"
+
+[table.grt__approval.columns]
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+spender = "The `spender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+value = "The `value` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__approval.footguns]
+big_ints = ["value"]
+overflows_dec = ["value"]
+
+[table.grt__bridge_burned]
+description = "`BridgeBurned(address,uint256)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per BridgeBurned(address,uint256) event"
+
+[table.grt__bridge_burned.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__bridge_burned.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.grt__bridge_minted]
+description = "`BridgeMinted(address,uint256)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per BridgeMinted(address,uint256) event"
+
+[table.grt__bridge_minted.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__bridge_minted.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.grt__gateway_set]
+description = "`GatewaySet(address)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per GatewaySet(address) event"
+
+[table.grt__gateway_set.columns]
+gateway = "The `gateway` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__l1_address_set]
+description = "`L1AddressSet(address)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per L1AddressSet(address) event"
+
+[table.grt__l1_address_set.columns]
+l1Address = "The `l1Address` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__minter_added]
+description = "`MinterAdded(address)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MinterAdded(address) event"
+
+[table.grt__minter_added.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__minter_removed]
+description = "`MinterRemoved(address)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MinterRemoved(address) event"
+
+[table.grt__minter_removed.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__new_ownership]
+description = "`NewOwnership(address,address)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per NewOwnership(address,address) event"
+
+[table.grt__new_ownership.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__new_ownership.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+
+[table.grt__new_pending_ownership]
+description = "`NewPendingOwnership(address,address)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per NewPendingOwnership(address,address) event"
+
+[table.grt__new_pending_ownership.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__new_pending_ownership.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+
+[table.grt__transfer]
+description = "`Transfer(address,address,uint256)` events emitted by the `grt` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Transfer(address,address,uint256) event"
+
+[table.grt__transfer.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+value = "The `value` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.grt__transfer.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = ["value"]
+overflows_dec = ["value"]
+
+[table.rewards__contract_synced]
+description = "`ContractSynced(bytes32,address)` events emitted by the `rewards` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ContractSynced(bytes32,address) event"
+
+[table.rewards__contract_synced.columns]
+contractAddress = "The `contractAddress` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nameHash = "The `nameHash` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.rewards__horizon_rewards_assigned]
+description = "`HorizonRewardsAssigned(address,address,uint256)` events emitted by the `rewards` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per HorizonRewardsAssigned(address,address,uint256) event"
+
+[table.rewards__horizon_rewards_assigned.columns]
+allocationID = "The `allocationID` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexer = "The `indexer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.rewards__horizon_rewards_assigned.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.rewards__parameter_updated]
+description = "`ParameterUpdated(string)` events emitted by the `rewards` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ParameterUpdated(string) event"
+
+[table.rewards__parameter_updated.columns]
+param = "The `param` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.rewards__rewards_denied]
+description = "`RewardsDenied(address,address)` events emitted by the `rewards` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RewardsDenied(address,address) event"
+
+[table.rewards__rewards_denied.columns]
+allocationID = "The `allocationID` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexer = "The `indexer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.rewards__rewards_denylist_updated]
+description = "`RewardsDenylistUpdated(bytes32,uint256)` events emitted by the `rewards` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RewardsDenylistUpdated(bytes32,uint256) event"
+
+[table.rewards__rewards_denylist_updated.columns]
+sinceBlock = "The `sinceBlock` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subgraphDeploymentID = "The `subgraphDeploymentID` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.rewards__rewards_denylist_updated.footguns]
+big_ints = ["sinceBlock"]
+overflows_dec = ["sinceBlock"]
+
+[table.rewards__set_controller]
+description = "`SetController(address)` events emitted by the `rewards` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SetController(address) event"
+
+[table.rewards__set_controller.columns]
+controller = "The `controller` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.rewards__subgraph_service_set]
+description = "`SubgraphServiceSet(address,address)` events emitted by the `rewards` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SubgraphServiceSet(address,address) event"
+
+[table.rewards__subgraph_service_set.columns]
+newSubgraphService = "The `newSubgraphService` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+oldSubgraphService = "The `oldSubgraphService` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__allowed_locked_verifier_set]
+description = "`AllowedLockedVerifierSet(address,bool)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per AllowedLockedVerifierSet(address,bool) event"
+
+[table.staking__allowed_locked_verifier_set.columns]
+allowed = "The `allowed` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `allowed = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `allowed = 'true'` or `CAST(allowed AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__allowed_locked_verifier_set.footguns]
+bools = ["allowed"]
+
+[table.staking__delegated_tokens_withdrawn]
+description = "`DelegatedTokensWithdrawn(address,address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DelegatedTokensWithdrawn(address,address,address,uint256) event"
+
+[table.staking__delegated_tokens_withdrawn.columns]
+delegator = "The `delegator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__delegated_tokens_withdrawn.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__delegation_fee_cut_set]
+description = "`DelegationFeeCutSet(address,address,uint8,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DelegationFeeCutSet(address,address,uint8,uint256) event"
+
+[table.staking__delegation_fee_cut_set.columns]
+feeCut = "The `feeCut` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+paymentType = "The `paymentType` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__delegation_fee_cut_set.footguns]
+big_ints = ["feeCut"]
+overflows_dec = ["feeCut"]
+
+[table.staking__delegation_slashed]
+description = "`DelegationSlashed(address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DelegationSlashed(address,address,uint256) event"
+
+[table.staking__delegation_slashed.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__delegation_slashed.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__delegation_slashing_enabled]
+description = "`DelegationSlashingEnabled()` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DelegationSlashingEnabled() event"
+
+[table.staking__delegation_slashing_skipped]
+description = "`DelegationSlashingSkipped(address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DelegationSlashingSkipped(address,address,uint256) event"
+
+[table.staking__delegation_slashing_skipped.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__delegation_slashing_skipped.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__graph_directory_initialized]
+description = "`GraphDirectoryInitialized(address,address,address,address,address,address,address,address,address,address)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per GraphDirectoryInitialized(address,address,address,address,address,address,address,address,address,address) event"
+
+[table.staking__graph_directory_initialized.columns]
+graphController = "The `graphController` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphCuration = "The `graphCuration` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphEpochManager = "The `graphEpochManager` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphEscrow = "The `graphEscrow` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphPayments = "The `graphPayments` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphProxyAdmin = "The `graphProxyAdmin` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphRewardsManager = "The `graphRewardsManager` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphStaking = "The `graphStaking` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphToken = "The `graphToken` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+graphTokenGateway = "The `graphTokenGateway` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__horizon_stake_deposited]
+description = "`HorizonStakeDeposited(address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per HorizonStakeDeposited(address,uint256) event"
+
+[table.staking__horizon_stake_deposited.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__horizon_stake_deposited.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__horizon_stake_locked]
+description = "`HorizonStakeLocked(address,uint256,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per HorizonStakeLocked(address,uint256,uint256) event"
+
+[table.staking__horizon_stake_locked.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+until = "The `until` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__horizon_stake_locked.footguns]
+big_ints = [
+    "tokens",
+    "until",
+]
+overflows_dec = [
+    "tokens",
+    "until",
+]
+
+[table.staking__horizon_stake_withdrawn]
+description = "`HorizonStakeWithdrawn(address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per HorizonStakeWithdrawn(address,uint256) event"
+
+[table.staking__horizon_stake_withdrawn.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__horizon_stake_withdrawn.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__max_thawing_period_set]
+description = "`MaxThawingPeriodSet(uint64)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MaxThawingPeriodSet(uint64) event"
+
+[table.staking__max_thawing_period_set.columns]
+maxThawingPeriod = "The `maxThawingPeriod` uint64 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__operator_set]
+description = "`OperatorSet(address,address,address,bool)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per OperatorSet(address,address,address,bool) event"
+
+[table.staking__operator_set.columns]
+allowed = "The `allowed` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `allowed = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `allowed = 'true'` or `CAST(allowed AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__operator_set.footguns]
+bools = ["allowed"]
+
+[table.staking__provision_created]
+description = "`ProvisionCreated(address,address,uint256,uint32,uint64)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ProvisionCreated(address,address,uint256,uint32,uint64) event"
+
+[table.staking__provision_created.columns]
+maxVerifierCut = "The `maxVerifierCut` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawingPeriod = "The `thawingPeriod` uint64 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__provision_created.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__provision_increased]
+description = "`ProvisionIncreased(address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ProvisionIncreased(address,address,uint256) event"
+
+[table.staking__provision_increased.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__provision_increased.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__provision_parameters_set]
+description = "`ProvisionParametersSet(address,address,uint32,uint64)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ProvisionParametersSet(address,address,uint32,uint64) event"
+
+[table.staking__provision_parameters_set.columns]
+maxVerifierCut = "The `maxVerifierCut` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawingPeriod = "The `thawingPeriod` uint64 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__provision_parameters_staged]
+description = "`ProvisionParametersStaged(address,address,uint32,uint64)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ProvisionParametersStaged(address,address,uint32,uint64) event"
+
+[table.staking__provision_parameters_staged.columns]
+maxVerifierCut = "The `maxVerifierCut` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawingPeriod = "The `thawingPeriod` uint64 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__provision_slashed]
+description = "`ProvisionSlashed(address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ProvisionSlashed(address,address,uint256) event"
+
+[table.staking__provision_slashed.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__provision_slashed.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__provision_thawed]
+description = "`ProvisionThawed(address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ProvisionThawed(address,address,uint256) event"
+
+[table.staking__provision_thawed.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__provision_thawed.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__stake_delegated_withdrawn]
+description = "`StakeDelegatedWithdrawn(address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per StakeDelegatedWithdrawn(address,address,uint256) event"
+
+[table.staking__stake_delegated_withdrawn.columns]
+delegator = "The `delegator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexer = "The `indexer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__stake_delegated_withdrawn.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__thaw_request_created]
+description = "`ThawRequestCreated(uint8,address,address,address,uint256,uint64,bytes32,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ThawRequestCreated(uint8,address,address,address,uint256,uint64,bytes32,uint256) event"
+
+[table.staking__thaw_request_created.columns]
+nonce = "The `nonce` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestType = "The `requestType` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+shares = "The `shares` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawRequestId = "The `thawRequestId` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawingUntil = "The `thawingUntil` uint64 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__thaw_request_created.footguns]
+big_ints = [
+    "shares",
+    "nonce",
+]
+overflows_dec = [
+    "shares",
+    "nonce",
+]
+
+[table.staking__thaw_request_fulfilled]
+description = "`ThawRequestFulfilled(uint8,bytes32,uint256,uint256,uint64,bool)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ThawRequestFulfilled(uint8,bytes32,uint256,uint256,uint64,bool) event"
+
+[table.staking__thaw_request_fulfilled.columns]
+requestType = "The `requestType` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+shares = "The `shares` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawRequestId = "The `thawRequestId` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawingUntil = "The `thawingUntil` uint64 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+valid = "The `valid` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `valid = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `valid = 'true'` or `CAST(valid AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__thaw_request_fulfilled.footguns]
+big_ints = [
+    "tokens",
+    "shares",
+]
+overflows_dec = [
+    "tokens",
+    "shares",
+]
+bools = ["valid"]
+
+[table.staking__thaw_requests_fulfilled]
+description = "`ThawRequestsFulfilled(uint8,address,address,address,uint256,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ThawRequestsFulfilled(uint8,address,address,address,uint256,uint256) event"
+
+[table.staking__thaw_requests_fulfilled.columns]
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestType = "The `requestType` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawRequestsFulfilled = "The `thawRequestsFulfilled` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__thaw_requests_fulfilled.footguns]
+big_ints = [
+    "thawRequestsFulfilled",
+    "tokens",
+]
+overflows_dec = [
+    "thawRequestsFulfilled",
+    "tokens",
+]
+
+[table.staking__thawing_period_cleared]
+description = "`ThawingPeriodCleared()` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ThawingPeriodCleared() event"
+
+[table.staking__tokens_delegated]
+description = "`TokensDelegated(address,address,address,uint256,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per TokensDelegated(address,address,address,uint256,uint256) event"
+
+[table.staking__tokens_delegated.columns]
+delegator = "The `delegator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+shares = "The `shares` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__tokens_delegated.footguns]
+big_ints = [
+    "tokens",
+    "shares",
+]
+overflows_dec = [
+    "tokens",
+    "shares",
+]
+
+[table.staking__tokens_deprovisioned]
+description = "`TokensDeprovisioned(address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per TokensDeprovisioned(address,address,uint256) event"
+
+[table.staking__tokens_deprovisioned.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__tokens_deprovisioned.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__tokens_to_delegation_pool_added]
+description = "`TokensToDelegationPoolAdded(address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per TokensToDelegationPoolAdded(address,address,uint256) event"
+
+[table.staking__tokens_to_delegation_pool_added.columns]
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__tokens_to_delegation_pool_added.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking__tokens_undelegated]
+description = "`TokensUndelegated(address,address,address,uint256,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per TokensUndelegated(address,address,address,uint256,uint256) event"
+
+[table.staking__tokens_undelegated.columns]
+delegator = "The `delegator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+shares = "The `shares` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__tokens_undelegated.footguns]
+big_ints = [
+    "tokens",
+    "shares",
+]
+overflows_dec = [
+    "tokens",
+    "shares",
+]
+
+[table.staking__verifier_tokens_sent]
+description = "`VerifierTokensSent(address,address,address,uint256)` events emitted by the `staking` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VerifierTokensSent(address,address,address,uint256) event"
+
+[table.staking__verifier_tokens_sent.columns]
+destination = "The `destination` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+serviceProvider = "The `serviceProvider` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+verifier = "The `verifier` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking__verifier_tokens_sent.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking_legacy__stake_delegated]
+description = "`StakeDelegated(address,address,uint256,uint256)` events emitted by the `staking_legacy` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per StakeDelegated(address,address,uint256,uint256) event"
+
+[table.staking_legacy__stake_delegated.columns]
+delegator = "The `delegator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexer = "The `indexer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+shares = "The `shares` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking_legacy__stake_delegated.footguns]
+big_ints = [
+    "tokens",
+    "shares",
+]
+overflows_dec = [
+    "tokens",
+    "shares",
+]
+
+[table.staking_legacy__stake_delegated_locked]
+description = "`StakeDelegatedLocked(address,address,uint256,uint256,uint256)` events emitted by the `staking_legacy` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per StakeDelegatedLocked(address,address,uint256,uint256,uint256) event"
+
+[table.staking_legacy__stake_delegated_locked.columns]
+delegator = "The `delegator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexer = "The `indexer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+shares = "The `shares` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+until = "The `until` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking_legacy__stake_delegated_locked.footguns]
+big_ints = [
+    "tokens",
+    "shares",
+    "until",
+]
+overflows_dec = [
+    "tokens",
+    "shares",
+    "until",
+]
+
+[table.staking_legacy__stake_deposited]
+description = "`StakeDeposited(address,uint256)` events emitted by the `staking_legacy` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per StakeDeposited(address,uint256) event"
+
+[table.staking_legacy__stake_deposited.columns]
+indexer = "The `indexer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking_legacy__stake_deposited.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[table.staking_legacy__stake_slashed]
+description = "`StakeSlashed(address,uint256,uint256,address)` events emitted by the `staking_legacy` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per StakeSlashed(address,uint256,uint256,address) event"
+
+[table.staking_legacy__stake_slashed.columns]
+beneficiary = "The `beneficiary` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexer = "The `indexer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+reward = "The `reward` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking_legacy__stake_slashed.footguns]
+big_ints = [
+    "tokens",
+    "reward",
+]
+overflows_dec = [
+    "tokens",
+    "reward",
+]
+
+[table.staking_legacy__stake_withdrawn]
+description = "`StakeWithdrawn(address,uint256)` events emitted by the `staking_legacy` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per StakeWithdrawn(address,uint256) event"
+
+[table.staking_legacy__stake_withdrawn.columns]
+indexer = "The `indexer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokens = "The `tokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.staking_legacy__stake_withdrawn.footguns]
+big_ints = ["tokens"]
+overflows_dec = ["tokens"]
+
+[view]
+
+# Authored views (views/*.sql) are described here so the MCP/`/schema` can render them:
+# [view.your_view_name]
+# description = "What this derivation computes."

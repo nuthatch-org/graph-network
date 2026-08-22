@@ -1,0 +1,109 @@
+# nuthatch nest on arbitrum-one
+
+A self-hosted blockchain index. Query it locally; there is no third-party API.
+
+## Contracts
+- `gns` = 0xec9a7fb6cbc2e41926127929c2dce6e9c5d33bec
+- `curation` = 0x22d78fb4bc72e191c765807f8891b5e1785c8014
+- `epochs` = 0x5a843145c43d328b9bb7a4401d94918f131bb281
+- `rewards` = 0x971b9d3d0ae3eca029cab5ea1fb0f72c85e6a525
+- `grt` = 0x9623063377ad1b27544c965ccd7342f7ea7e88c7
+- `staking` = 0x00669a4cf01450b64e8a2a20e9b1fcb71e61ef03
+- `staking_legacy` = 0x00669a4cf01450b64e8a2a20e9b1fcb71e61ef03
+
+## Tables (one per contract event)
+- `curation__burned` - Burned(address,bytes32,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, curator, subgraphDeploymentID, tokens, signal)
+- `curation__collected` - Collected(bytes32,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphDeploymentID, tokens)
+- `curation__contract_synced` - ContractSynced(bytes32,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, nameHash, contractAddress)
+- `curation__parameter_updated` - ParameterUpdated(string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, param)
+- `curation__set_controller` - SetController(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, controller)
+- `curation__signalled` - Signalled(address,bytes32,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, curator, subgraphDeploymentID, tokens, signal, curationTax)
+- `curation__subgraph_service_set` - SubgraphServiceSet(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, newSubgraphService)
+- `epochs__contract_synced` - ContractSynced(bytes32,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, nameHash, contractAddress)
+- `epochs__epoch_length_update` - EpochLengthUpdate(uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, epoch, epochLength)
+- `epochs__epoch_run` - EpochRun(uint256,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, epoch, caller)
+- `epochs__parameter_updated` - ParameterUpdated(string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, param)
+- `epochs__set_controller` - SetController(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, controller)
+- `gns__contract_synced` - ContractSynced(bytes32,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, nameHash, contractAddress)
+- `gns__counterpart_g_n_s_address_updated` - CounterpartGNSAddressUpdated(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, _counterpart)
+- `gns__curator_balance_received` - CuratorBalanceReceived(uint256,uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, _l1SubgraphId, _l2SubgraphID, _l2Curator, _tokens)
+- `gns__curator_balance_returned_to_beneficiary` - CuratorBalanceReturnedToBeneficiary(uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, _l1SubgraphID, _l2Curator, _tokens)
+- `gns__g_r_t_withdrawn` - GRTWithdrawn(uint256,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, curator, nSignalBurnt, withdrawnGRT)
+- `gns__legacy_subgraph_claimed` - LegacySubgraphClaimed(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, graphAccount, subgraphNumber)
+- `gns__parameter_updated` - ParameterUpdated(string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, param)
+- `gns__set_controller` - SetController(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, controller)
+- `gns__set_default_name` - SetDefaultName(address,uint256,bytes32,string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, graphAccount, nameSystem, nameIdentifier, name)
+- `gns__signal_burned` - SignalBurned(uint256,address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, curator, nSignalBurnt, vSignalBurnt, tokensReceived)
+- `gns__signal_minted` - SignalMinted(uint256,address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, curator, nSignalCreated, vSignalCreated, tokensDeposited)
+- `gns__signal_transferred` - SignalTransferred(uint256,address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, from, to, nSignalTransferred)
+- `gns__subgraph_deprecated` - SubgraphDeprecated(uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, withdrawableGRT)
+- `gns__subgraph_l2_transfer_finalized` - SubgraphL2TransferFinalized(uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, _l2SubgraphID)
+- `gns__subgraph_metadata_updated` - SubgraphMetadataUpdated(uint256,bytes32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, subgraphMetadata)
+- `gns__subgraph_n_f_t_updated` - SubgraphNFTUpdated(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphNFT)
+- `gns__subgraph_published` - SubgraphPublished(uint256,bytes32,uint32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, subgraphDeploymentID, reserveRatio)
+- `gns__subgraph_received_from_l1` - SubgraphReceivedFromL1(uint256,uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, _l1SubgraphID, _l2SubgraphID, _owner, _tokens)
+- `gns__subgraph_upgraded` - SubgraphUpgraded(uint256,uint256,uint256,bytes32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, vSignalCreated, tokensSignalled, subgraphDeploymentID)
+- `gns__subgraph_version_updated` - SubgraphVersionUpdated(uint256,bytes32,bytes32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphID, subgraphDeploymentID, versionMetadata)
+- `grt__approval` - Approval(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, owner, spender, value)
+- `grt__bridge_burned` - BridgeBurned(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, account, amount)
+- `grt__bridge_minted` - BridgeMinted(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, account, amount)
+- `grt__gateway_set` - GatewaySet(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, gateway)
+- `grt__l1_address_set` - L1AddressSet(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, l1Address)
+- `grt__minter_added` - MinterAdded(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, account)
+- `grt__minter_removed` - MinterRemoved(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, account)
+- `grt__new_ownership` - NewOwnership(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to)
+- `grt__new_pending_ownership` - NewPendingOwnership(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to)
+- `grt__transfer` - Transfer(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, value)
+- `rewards__contract_synced` - ContractSynced(bytes32,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, nameHash, contractAddress)
+- `rewards__horizon_rewards_assigned` - HorizonRewardsAssigned(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, indexer, allocationID, amount)
+- `rewards__parameter_updated` - ParameterUpdated(string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, param)
+- `rewards__rewards_denied` - RewardsDenied(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, indexer, allocationID)
+- `rewards__rewards_denylist_updated` - RewardsDenylistUpdated(bytes32,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, subgraphDeploymentID, sinceBlock)
+- `rewards__set_controller` - SetController(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, controller)
+- `rewards__subgraph_service_set` - SubgraphServiceSet(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, oldSubgraphService, newSubgraphService)
+- `staking__allowed_locked_verifier_set` - AllowedLockedVerifierSet(address,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, verifier, allowed)
+- `staking__delegated_tokens_withdrawn` - DelegatedTokensWithdrawn(address,address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, delegator, tokens)
+- `staking__delegation_fee_cut_set` - DelegationFeeCutSet(address,address,uint8,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, paymentType, feeCut)
+- `staking__delegation_slashed` - DelegationSlashed(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, tokens)
+- `staking__delegation_slashing_enabled` - DelegationSlashingEnabled() (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq)
+- `staking__delegation_slashing_skipped` - DelegationSlashingSkipped(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, tokens)
+- `staking__graph_directory_initialized` - GraphDirectoryInitialized(address,address,address,address,address,address,address,address,address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, graphToken, graphStaking, graphPayments, graphEscrow, graphController, graphEpochManager, graphRewardsManager, graphTokenGateway, graphProxyAdmin, graphCuration)
+- `staking__horizon_stake_deposited` - HorizonStakeDeposited(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, tokens)
+- `staking__horizon_stake_locked` - HorizonStakeLocked(address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, tokens, until)
+- `staking__horizon_stake_withdrawn` - HorizonStakeWithdrawn(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, tokens)
+- `staking__max_thawing_period_set` - MaxThawingPeriodSet(uint64) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, maxThawingPeriod)
+- `staking__operator_set` - OperatorSet(address,address,address,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, operator, allowed)
+- `staking__provision_created` - ProvisionCreated(address,address,uint256,uint32,uint64) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, tokens, maxVerifierCut, thawingPeriod)
+- `staking__provision_increased` - ProvisionIncreased(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, tokens)
+- `staking__provision_parameters_set` - ProvisionParametersSet(address,address,uint32,uint64) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, maxVerifierCut, thawingPeriod)
+- `staking__provision_parameters_staged` - ProvisionParametersStaged(address,address,uint32,uint64) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, maxVerifierCut, thawingPeriod)
+- `staking__provision_slashed` - ProvisionSlashed(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, tokens)
+- `staking__provision_thawed` - ProvisionThawed(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, tokens)
+- `staking__stake_delegated_withdrawn` - StakeDelegatedWithdrawn(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, indexer, delegator, tokens)
+- `staking__thaw_request_created` - ThawRequestCreated(uint8,address,address,address,uint256,uint64,bytes32,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestType, serviceProvider, verifier, owner, shares, thawingUntil, thawRequestId, nonce)
+- `staking__thaw_request_fulfilled` - ThawRequestFulfilled(uint8,bytes32,uint256,uint256,uint64,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestType, thawRequestId, tokens, shares, thawingUntil, valid)
+- `staking__thaw_requests_fulfilled` - ThawRequestsFulfilled(uint8,address,address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestType, serviceProvider, verifier, owner, thawRequestsFulfilled, tokens)
+- `staking__thawing_period_cleared` - ThawingPeriodCleared() (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq)
+- `staking__tokens_delegated` - TokensDelegated(address,address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, delegator, tokens, shares)
+- `staking__tokens_deprovisioned` - TokensDeprovisioned(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, tokens)
+- `staking__tokens_to_delegation_pool_added` - TokensToDelegationPoolAdded(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, tokens)
+- `staking__tokens_undelegated` - TokensUndelegated(address,address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, delegator, tokens, shares)
+- `staking__verifier_tokens_sent` - VerifierTokensSent(address,address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, serviceProvider, verifier, destination, tokens)
+- `staking_legacy__stake_delegated` - StakeDelegated(address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, indexer, delegator, tokens, shares)
+- `staking_legacy__stake_delegated_locked` - StakeDelegatedLocked(address,address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, indexer, delegator, tokens, shares, until)
+- `staking_legacy__stake_deposited` - StakeDeposited(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, indexer, tokens)
+- `staking_legacy__stake_slashed` - StakeSlashed(address,uint256,uint256,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, indexer, tokens, reward, beneficiary)
+- `staking_legacy__stake_withdrawn` - StakeWithdrawn(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, indexer, tokens)
+
+## Live HTTP API (run `nuthatch dev`)
+- `GET /`                    index status
+- `GET /tables`              every table with its columns
+- `GET /table/{name}?limit=N` recent rows of one table (hot + sealed)
+- `GET /entity/{id}`         one row by id (`{block:012}-{logindex:06}`)
+- `GET /sql?q=SELECT...`     read-only SQL; each table is a view named `{alias}__{event}`
+- `GET /balances?limit=N`    top holder balances (when an ERC-20 Transfer table is present)
+- `GET /balance/{address}`   one address's derived balance
+
+## MCP (for coding agents)
+Run `nuthatch mcp` (stdio) to expose tools: status, schema, tables, table, sql, entity,
+balance, top_balances. Fully offline against the local instance; nothing phones home.
