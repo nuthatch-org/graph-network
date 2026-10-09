@@ -1,6 +1,6 @@
 # graph-network
 
-A [nuthatch](https://github.com/nightswatchhq/nuthatch) nest: **The Graph Network on Arbitrum**.
+A [nuthatch](https://github.com/nuthatch-org/nuthatch) nest: **The Graph Network on Arbitrum**.
 
 Six contracts in one surface: GNS, curation, epochs, rewards, GRT and Horizon staking.
 
@@ -33,7 +33,7 @@ Indexed blocks **496,876,845 to 497,272,408** and sealed **12,674 events**. Ever
 ## Run it
 
 ```sh
-nuthatch init --from https://github.com/nightswatchhq/graph-network
+nuthatch init --from https://github.com/nuthatch-org/graph-network
 cd graph-network
 nuthatch dev --dir . --backfill 50000 --seal-direct
 nuthatch sql --dir . "SELECT count(*) FROM \"curation__burned\""
